@@ -63,6 +63,7 @@ replace (
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Patch for a race condition involving metadata-only
 	// informers until it can be resolved upstream:
 	sigs.k8s.io/controller-runtime v0.9.2 => github.com/benluddy/controller-runtime v0.9.3-0.20210720171926-9bcb99bd9bd3
@@ -75,6 +76,11 @@ replace (
 >>>>>>> 9d14698a1 (Temporarily use controller-runtime fork with data race patch.)
 =======
 >>>>>>> e731c70a5 (Remove pin of etcd and grpc (resolved in etcd v3.5.0).)
+=======
+	// Patch for a race condition involving metadata-only
+	// informers until it can be resolved upstream:
+	sigs.k8s.io/controller-runtime v0.9.2 => github.com/benluddy/controller-runtime v0.9.3-0.20210720171926-9bcb99bd9bd3
+>>>>>>> 9d14698a1 (Temporarily use controller-runtime fork with data race patch.)
 
 	// pinned because no tag supports 1.18 yet
 	sigs.k8s.io/structured-merge-diff => sigs.k8s.io/structured-merge-diff v1.0.1-0.20191108220359-b1b620dd3f06
