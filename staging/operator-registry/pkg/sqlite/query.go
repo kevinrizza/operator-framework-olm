@@ -1143,6 +1143,42 @@ func buildLegacyProvidedAPIs(src []*api.Property, dst *[]*api.GroupVersionKind) 
 	return nil
 }
 
+func buildLegacyRequiredAPIs(src []*api.Dependency, dst *[]*api.GroupVersionKind) error {
+	for _, p := range src {
+		if p.GetType() != registry.GVKType {
+			continue
+		}
+		var value registry.GVKDependency
+		if err := json.Unmarshal([]byte(p.GetValue()), &value); err != nil {
+			return err
+		}
+		*dst = append(*dst, &api.GroupVersionKind{
+			Group:   value.Group,
+			Version: value.Version,
+			Kind:    value.Kind,
+		})
+	}
+	return nil
+}
+
+func buildLegacyProvidedAPIs(src []*api.Property, dst *[]*api.GroupVersionKind) error {
+	for _, p := range src {
+		if p.GetType() != registry.GVKType {
+			continue
+		}
+		var value registry.GVKProperty
+		if err := json.Unmarshal([]byte(p.GetValue()), &value); err != nil {
+			return err
+		}
+		*dst = append(*dst, &api.GroupVersionKind{
+			Group:   value.Group,
+			Version: value.Version,
+			Kind:    value.Kind,
+		})
+	}
+	return nil
+}
+
 func uniqueDeps(deps []*api.Dependency) []*api.Dependency {
 	if len(deps) <= 1 {
 		return deps
